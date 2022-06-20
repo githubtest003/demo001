@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.dao.UsersDao">
+    <resultMap type="Users" id="UsersResultMapper">
+        <id property="uid" column="uid" />
+        <result property="uname" column="uname" />
+        <result property="upass" column="upass" />
+    </resultMap>
+
+    <insert id="addUsers" parameterType="Users">
+        INSERT into users values(null,#{uname},#{upass})
+    </insert>
+    <select id="checkLogin" parameterType="Users" resultMap="UsersResultMapper">
+        select * from users where uname=#{uname} and upass=#{upass}
+    </select>
+</mapper>
